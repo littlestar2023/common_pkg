@@ -1,4 +1,4 @@
-package core
+package initialize
 
 import (
 	"common_pkg/global"
@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func Zap() (logger *zap.Logger) {
+func InitialZap() (logger *zap.Logger) {
 	if ok, _ := utils.PathExists(global.CMP_CONFIG.Zap.Director); !ok { // 判断是否有Director文件夹
 		fmt.Printf("create %v directory\n", global.CMP_CONFIG.Zap.Director)
 		_ = os.Mkdir(global.CMP_CONFIG.Zap.Director, os.ModePerm)
@@ -22,6 +22,9 @@ func Zap() (logger *zap.Logger) {
 	if global.CMP_CONFIG.Zap.ShowLine {
 		logger = logger.WithOptions(zap.AddCaller())
 	}
+
+	zap.ReplaceGlobals(logger)
+
 	return logger
 }
 
@@ -29,8 +32,6 @@ var Zapper = new(_zap)
 
 type _zap struct{}
 
-// GetEncoder 获取 zapcore.Encoder
-// Author [SliverHorn](https://github.com/SliverHorn)
 func (z *_zap) GetEncoder() zapcore.Encoder {
 	if global.CMP_CONFIG.Zap.Format == "json" {
 		return zapcore.NewJSONEncoder(z.GetEncoderConfig())
@@ -38,8 +39,6 @@ func (z *_zap) GetEncoder() zapcore.Encoder {
 	return zapcore.NewConsoleEncoder(z.GetEncoderConfig())
 }
 
-// GetEncoderConfig 获取zapcore.EncoderConfig
-// Author [SliverHorn](https://github.com/SliverHorn)
 func (z *_zap) GetEncoderConfig() zapcore.EncoderConfig {
 	return zapcore.EncoderConfig{
 		MessageKey:     "message",
@@ -56,8 +55,6 @@ func (z *_zap) GetEncoderConfig() zapcore.EncoderConfig {
 	}
 }
 
-// GetEncoderCore 获取Encoder的 zapcore.Core
-// Author [SliverHorn](https://github.com/SliverHorn)
 func (z *_zap) GetEncoderCore(l zapcore.Level, level zap.LevelEnablerFunc) zapcore.Core {
 	writer, err := FileRotateLogs.GetWriteSyncer(l.String()) // 使用file-rotatelogs进行日志分割
 	if err != nil {
@@ -68,14 +65,10 @@ func (z *_zap) GetEncoderCore(l zapcore.Level, level zap.LevelEnablerFunc) zapco
 	return zapcore.NewCore(z.GetEncoder(), writer, level)
 }
 
-// CustomTimeEncoder 自定义日志输出时间格式
-// Author [SliverHorn](https://github.com/SliverHorn)
 func (z *_zap) CustomTimeEncoder(t time.Time, encoder zapcore.PrimitiveArrayEncoder) {
 	encoder.AppendString(global.CMP_CONFIG.Zap.Prefix + t.Format("2006/01/02 - 15:04:05.000"))
 }
 
-// GetZapCores 根据配置文件的Level获取 []zapcore.Core
-// Author [SliverHorn](https://github.com/SliverHorn)
 func (z *_zap) GetZapCores() []zapcore.Core {
 	cores := make([]zapcore.Core, 0, 7)
 	for level := global.CMP_CONFIG.Zap.TransportLevel(); level <= zapcore.FatalLevel; level++ {
@@ -84,8 +77,6 @@ func (z *_zap) GetZapCores() []zapcore.Core {
 	return cores
 }
 
-// GetLevelPriority 根据 zapcore.Level 获取 zap.LevelEnablerFunc
-// Author [SliverHorn](https://github.com/SliverHorn)
 func (z *_zap) GetLevelPriority(level zapcore.Level) zap.LevelEnablerFunc {
 	switch level {
 	case zapcore.DebugLevel:

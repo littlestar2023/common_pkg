@@ -1,4 +1,4 @@
-package core
+package initialize
 
 import (
 	"common_pkg/consts"
@@ -10,7 +10,7 @@ import (
 	"os"
 )
 
-func Viper() *viper.Viper {
+func InitialViper() *viper.Viper {
 
 	var config string
 	flag.StringVar(&config, "c", "", "choose config file.")

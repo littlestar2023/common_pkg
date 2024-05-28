@@ -1,14 +1,23 @@
 package initialize
 
 import (
-	"common_pkg/core"
 	"common_pkg/global"
 )
 
-func Initialize() (err error) {
+func Initialize() {
 
-	global.CMP_VP = core.Viper()
-	global.CMP_LOG = core.Zap()
+	global.CMP_VP = InitialViper()
+	global.CMP_LOG = InitialZap()
+	if global.CMP_CONFIG.System.UseDb {
+		global.CMP_DB = InitialGORM()
+	}
 
+	if global.CMP_CONFIG.System.UseRedis {
+		global.GVA_REDIS = InitialRedis()
+	}
+
+	if global.CMP_CONFIG.System.UseNSQ {
+		global.CMP_DBMAP = InitialDBMap()
+	}
 	return
 }
