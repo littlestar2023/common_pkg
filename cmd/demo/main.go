@@ -1,9 +1,9 @@
 package main
 
 import (
-	"common_pkg/cmd/demo/config"
-	"common_pkg/initialize"
 	"fmt"
+	"github.com/littlestar2023/common_pkg/cmd/demo/config"
+	"github.com/littlestar2023/common_pkg/initialize"
 )
 
 func main() {

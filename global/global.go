@@ -1,7 +1,7 @@
 package global
 
 import (
-	"common_pkg/config"
+	"github.com/littlestar2023/common_pkg/config"
 	"github.com/redis/go-redis/v9"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"

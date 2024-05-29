@@ -1,7 +1,7 @@
 package initialize
 
 import (
-	"common_pkg/global"
+	"github.com/littlestar2023/common_pkg/global"
 )
 
 func Initialize() {

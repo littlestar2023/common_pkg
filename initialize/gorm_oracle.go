@@ -1,8 +1,8 @@
 package initialize
 
 import (
-	"common_pkg/config"
-	"common_pkg/global"
+	"github.com/littlestar2023/common_pkg/config"
+	"github.com/littlestar2023/common_pkg/global"
 
 	//_ "github.com/godror/godror"
 	"gorm.io/driver/mysql"

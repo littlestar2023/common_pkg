@@ -1,8 +1,8 @@
 package initialize
 
 import (
-	"common_pkg/global"
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
+	"github.com/littlestar2023/common_pkg/global"
 	"go.uber.org/zap/zapcore"
 	"os"
 	"path"

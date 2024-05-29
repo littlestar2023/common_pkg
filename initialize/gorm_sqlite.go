@@ -1,9 +1,9 @@
 package initialize
 
 import (
-	"common_pkg/config"
-	"common_pkg/global"
 	"github.com/glebarez/sqlite"
+	"github.com/littlestar2023/common_pkg/config"
+	"github.com/littlestar2023/common_pkg/global"
 	"gorm.io/gorm"
 )
 

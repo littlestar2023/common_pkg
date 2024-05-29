@@ -1,11 +1,11 @@
 package initialize
 
 import (
-	"common_pkg/consts"
-	"common_pkg/global"
 	"flag"
 	"fmt"
 	"github.com/fsnotify/fsnotify"
+	"github.com/littlestar2023/common_pkg/consts"
+	"github.com/littlestar2023/common_pkg/global"
 	"github.com/spf13/viper"
 	"os"
 )

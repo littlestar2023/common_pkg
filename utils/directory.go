@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"common_pkg/global"
 	"errors"
+	"github.com/littlestar2023/common_pkg/global"
 	"os"
 
 	"go.uber.org/zap"

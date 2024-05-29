@@ -1,9 +1,9 @@
 package initialize
 
 import (
-	"common_pkg/global"
-	"common_pkg/utils"
 	"fmt"
+	"github.com/littlestar2023/common_pkg/global"
+	"github.com/littlestar2023/common_pkg/utils"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"os"

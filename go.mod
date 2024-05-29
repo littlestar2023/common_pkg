@@ -1,4 +1,4 @@
-module common_pkg
+module github.com/littlestar2023/common_pkg
 
 go 1.20
 

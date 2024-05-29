@@ -9,9 +9,9 @@
 package initialize
 
 import (
-	"common_pkg/config"
-	"common_pkg/global"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/littlestar2023/common_pkg/config"
+	"github.com/littlestar2023/common_pkg/global"
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 )

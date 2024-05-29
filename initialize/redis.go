@@ -1,8 +1,8 @@
 package initialize
 
 import (
-	"common_pkg/global"
 	"context"
+	"github.com/littlestar2023/common_pkg/global"
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/zap"
 )

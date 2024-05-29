@@ -1,7 +1,7 @@
 package initialize
 
 import (
-	"common_pkg/global"
+	"github.com/littlestar2023/common_pkg/global"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
