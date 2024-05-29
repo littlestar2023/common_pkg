@@ -3,6 +3,14 @@ system:
   use-redis: true
   use-nsq: true
 
+customize-config:
+  lookup-addr: "141.193.158.226:4161"
+  lookup-auth-mode: ""
+  lookup-auth-user: ""
+  lookup-auth-password: ""
+  nsqd-addr: "141.193.158.226:4150"
+  local-cache-size: "1000"
+
 mysql:
   path: 8.222.220.235
   port: "3306"
