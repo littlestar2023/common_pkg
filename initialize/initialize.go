@@ -21,3 +21,21 @@ func Initialize() {
 	}
 	return
 }
+
+func InitializeWithCustomize(customizeType interface{}) {
+
+	global.CMP_VP = InitialViperWithCustomize(customizeType)
+	global.CMP_LOG = InitialZap()
+	if global.CMP_CONFIG.System.UseDb {
+		global.CMP_DB = InitialGORM()
+	}
+
+	if global.CMP_CONFIG.System.UseRedis {
+		global.GVA_REDIS = InitialRedis()
+	}
+
+	if global.CMP_CONFIG.System.UseNSQ {
+		global.CMP_DBMAP = InitialDBMap()
+	}
+	return
+}
