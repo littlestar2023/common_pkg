@@ -15,7 +15,7 @@ var (
 	CMP_CONFIG config.Server
 	CMP_DB     *gorm.DB
 	CMP_DBMAP  map[string]*gorm.DB
-	GVA_REDIS  *redis.Client
+	CMP_REDIS  *redis.Client
 	lock       sync.RWMutex
 )
 
