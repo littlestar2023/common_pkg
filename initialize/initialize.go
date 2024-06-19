@@ -13,7 +13,7 @@ func Initialize() {
 	}
 
 	if global.CMP_CONFIG.System.UseRedis {
-		global.GVA_REDIS = InitialRedis()
+		global.CMP_REDIS = InitialRedis()
 	}
 
 	if global.CMP_CONFIG.System.UseNSQ {
@@ -31,7 +31,7 @@ func InitializeWithCustomize(customizeType interface{}) {
 	}
 
 	if global.CMP_CONFIG.System.UseRedis {
-		global.GVA_REDIS = InitialRedis()
+		global.CMP_REDIS = InitialRedis()
 	}
 
 	if global.CMP_CONFIG.System.UseNSQ {
